@@ -1,0 +1,16 @@
+.date_time {
+  p {
+    margin-bottom: 0;
+  }
+  &__day {
+    text-transform: capitalize;
+  }
+  &__date {
+    padding-right: 15px;
+    text-transform: capitalize;
+  }
+  &__icon {
+    padding-right: 10px;
+    text-transform: capitalize;
+  }
+}

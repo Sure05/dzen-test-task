@@ -1,0 +1,15 @@
+.topBar {
+  &Container {
+    padding: 0 200px;
+    //justify-content: space-between;
+  }
+  &Logo {
+    img {
+      margin-right: 20px;
+    }
+    &Title {
+      text-transform: uppercase;
+      color: green;
+    }
+  }
+}

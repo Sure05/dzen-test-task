@@ -1,0 +1,43 @@
+.modal {
+  position: absolute;
+  //display: flex;
+  &_footer {
+    background-color: #05c205;
+    padding: 20px 35px 30px 30px;
+    &__button {
+      border: none;
+      text-transform: uppercase;
+      padding: 15px 30px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    &__cansel_button {
+      color: white;
+      background-color: transparent;
+    }
+    &__apply_button {
+      color: red;
+      background-color: white;
+      border-radius: 35px;
+      svg {
+        padding-right: 5px;
+      }
+    }
+  }
+  &_dialog_content {
+    width: 700px;
+  }
+  &_head {
+    padding: 30px 35px 30px 50px;
+  }
+  &__close {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    border: none;
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "product": "Product",
+  "addProduct": "Add product",
+  "available": "Available",
+  "not_available": "Under repair",
+  "from": "from",
+  "to": "to",
+  "new": "new",
+  "used": "used",
+  "remove_product": "Are you sure you want to remove this product?",
+  "remove_order": "Are you sure you want to delete this parish?"
+}

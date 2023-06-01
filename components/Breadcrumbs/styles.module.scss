@@ -1,0 +1,14 @@
+.breadcrumbs {
+  padding-bottom: 55px;
+}
+.breadcrumbContainer {
+  margin-bottom: 0;
+  li {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    &:before {
+      color: #000000 !important;
+    }
+  }
+}

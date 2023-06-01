@@ -1,0 +1,30 @@
+.product {
+  & > div {
+    padding: 0 10px;
+  }
+  &__exist {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    div {
+      border-radius: 50%;
+      background-color: yellowgreen;
+      width: 7px;
+      height: 7px;
+    }
+    &.not {
+      div {
+        background-color: black;
+      }
+    }
+  }
+  &_title_container {
+    &__title {
+      line-height: 1;
+    }
+    &__subtitle {
+      padding-top: 5px;
+      color: grey
+    }
+  }
+}

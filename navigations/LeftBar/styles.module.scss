@@ -1,0 +1,40 @@
+.leftBar {
+  box-shadow: 5px 0 25px 0 rgba(0, 0, 0, 0.3);
+  .userPhoto {
+    padding-top: 35px;
+    text-align: center;
+    position: relative;
+    .photo {
+      border-radius: 50%;
+    }
+    .settingsButton {
+      position: absolute;
+      bottom: -5px;
+      right: 20px;
+      padding: 14px;
+      border-radius: 50%;
+      line-height: 1;
+      cursor: pointer;
+      border: none;
+    }
+  }
+  .menu {
+    padding-top: 40px
+  }
+  .link {
+    text-align: center;
+    padding: 15px 0;
+    a {
+      text-transform: uppercase;
+      text-decoration: none;
+      color: black;
+      padding: 5px;
+      font-weight: 500;
+      &.active {
+        border-bottom: 2px;
+        border-color: green;
+        border-bottom-style: solid;
+      }
+    }
+  }
+}

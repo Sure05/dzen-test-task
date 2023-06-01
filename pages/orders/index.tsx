@@ -4,59 +4,16 @@ import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import React, {useEffect, useState} from "react";
 import styles from './styles.module.scss'
-import {GetServerSideProps, GetStaticProps} from "next";
+import {GetStaticProps} from "next";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import OrderElementList from "@/components/OrdersElementsList/OrderElementList";
-import {Order, Orders} from "@/types/order";
-import {Product} from "@/types/products";
+import {Order} from "@/types/order";
 import OrderInfo from "@/components/OrderInfo/OrderInfo";
 import {useRouter} from "next/router";
-import ProductInfo from "@/components/Modal/variants/ProductInfo/ProductInfo";
 import Modal from "@/components/Modal/Modal";
 import {useTranslation} from "next-i18next";
-import {orders} from "@/data";
-
-export const product: Product = {
-    id: 1,
-    serialNumber: 'SN-12.3456789',
-    isNew: true,
-    photo: '/product.jpeg',
-    title: 'Gigabyte Technology X58-USB3 (Socket 1366) 6 X58-USB3',
-    type: 'motherboard',
-    specification: 'Socket 1366',
-    guarantee: {
-        start: '2017-06-29 12:09:33',
-        end: '2017-06-29 12:09:33'
-    },
-    price: [
-        {value: 100, symbol: 'USD', isDefault: 0},
-        {value: 2600, symbol: 'UAH', isDefault: 1}
-    ],
-    order: 1,
-    date: '2017-06-29 12:09:33',
-    exist: true
-}
-
-export const product2: Product = {
-    id: 1,
-    serialNumber: 'SN-12.3456789',
-    isNew: true,
-    photo: '/product.jpeg',
-    title: 'Gigabyte Technology X58-USB3 (Socket 1366) 6 X58-USB3 - monitor',
-    type: 'monitor',
-    specification: 'Socket 1366',
-    guarantee: {
-        start: '2017-06-29 12:09:33',
-        end: '2017-06-29 12:09:33'
-    },
-    price: [
-        {value: 100, symbol: 'USD', isDefault: 0},
-        {value: 2600, symbol: 'UAH', isDefault: 1}
-    ],
-    order: 1,
-    date: '2017-06-29 12:09:33',
-    exist: true
-}
+import {useAppDispatch, useAppSelector} from "@/store/hooks";
+import {fetchOrders} from "@/store/slice/OrderSlice";
 
 type RouterQuery = {
     order_id?: string
@@ -69,10 +26,18 @@ const Bar = () => {
     const [selectedOrder, setSelectedOrder] = useState<number | string | null>(null);
     const [showModal, setShowModal] = useState(false);
     const [deletingOrderInfo, setDeletingOrderInfo] = useState<Order | null>(null);
+    const orders = useAppSelector(state => state.orders.data);
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
         setSelectedOrder(query.order_id ? query.order_id : null)
     }, [query])
+
+    useEffect(() => {
+        dispatch(fetchOrders())
+    }, [])
+
+    console.log(orders)
 
     const AddOrder = (
         <button className={`shadow ${styles.button}`} onClick={() => {

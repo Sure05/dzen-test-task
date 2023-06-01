@@ -8,5 +8,7 @@
   "new": "new",
   "used": "used",
   "remove_product": "Are you sure you want to remove this product?",
-  "remove_order": "Are you sure you want to delete this parish?"
+  "remove_order": "Are you sure you want to delete this parish?",
+  "cancel": "cancel",
+  "delete": "delete"
 }

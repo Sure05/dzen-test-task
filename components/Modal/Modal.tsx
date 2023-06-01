@@ -2,6 +2,7 @@ import styles from './styles.module.scss'
 import React, {PropsWithChildren} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faClose, faTrashCan} from "@fortawesome/free-solid-svg-icons";
+import {useTranslation} from "next-i18next";
 
 type ModalProps = {
     title: string,
@@ -9,6 +10,7 @@ type ModalProps = {
     close: () => void
 }
 const Modal: React.FC<PropsWithChildren & ModalProps> = ({children, title, open, close}) => {
+    const {t} = useTranslation('common')
     if(!open) return null
     return (
         <>
@@ -25,10 +27,10 @@ const Modal: React.FC<PropsWithChildren & ModalProps> = ({children, title, open,
                             {children}
                         </div>
                         <div className={`modal-footer ${styles.modal_footer}`}>
-                            <button onClick={close} type="button" className={`${styles.modal_footer__cansel_button} ${styles.modal_footer__button}`} data-bs-dismiss="modal">Close</button>
+                            <button onClick={close} type="button" className={`${styles.modal_footer__cansel_button} ${styles.modal_footer__button}`} data-bs-dismiss="modal">{t('cancel')}</button>
                             <button type="button" className={`shadow ${styles.modal_footer__apply_button} ${styles.modal_footer__button}`}>
                                 <FontAwesomeIcon icon={faTrashCan} color={"red"}/>
-                                Save changes
+                                {t('delete')}
                             </button>
                         </div>
                     </div>

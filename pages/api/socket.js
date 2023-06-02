@@ -4,7 +4,6 @@ let onlineUsers = [];
 export default function SocketHandler(req, res) {
     // It means that socket server was already initialised
     if (res.socket.server.io) {
-        console.log("Already set up");
         res.end();
         return;
     }
@@ -33,7 +32,7 @@ export default function SocketHandler(req, res) {
             io.emit("list", onlineUsers);
         })
 
-        socket.on("disconnected", () => {
+        socket.on("disconnect", () => {
             onlineUsers = onlineUsers.filter((user) => user.socketId !== socket.id);
             console.log("user disconnected", onlineUsers);
             // send all online users to all users

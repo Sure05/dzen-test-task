@@ -2,11 +2,14 @@
     display: flex;
     flex-wrap: nowrap;
     height: 100vh;
+    //height: auto;
     max-height: 100vh;
     background-color: #fafafa;
     .content {
         padding-top: 45px;
         width: calc(100% - 200px);
+        height: calc(100vh - 71px);
+        overflow: auto;
     }
 }
 .container {

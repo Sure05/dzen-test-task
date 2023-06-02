@@ -2,12 +2,14 @@
 import {Action, configureStore, ThunkAction} from "@reduxjs/toolkit";
 import orderSlice from "@/store/slice/OrderSlice";
 import productSlice from "@/store/slice/ProductSlice";
+import filtersSlice from "@/store/slice/FiltersSlice";
 
 export function makeStore() {
     return configureStore({
         reducer: {
             orders: orderSlice,
-            products: productSlice
+            products: productSlice,
+            filters: filtersSlice
         },
     })
 }

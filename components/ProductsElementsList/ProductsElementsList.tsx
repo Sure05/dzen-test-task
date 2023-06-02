@@ -44,7 +44,7 @@ const ProductsElementsList = ({product, dropProduct}: ProductsElementsList) => {
                 <Image src={product.photo} alt={product.title} width={55} height={45}/>
             </div>
             <div className={` align-items-center ${styles.product_title_container}`}>
-                <span className={`border-bottom ${styles.product_title_container__title}`}>{product.title}</span>
+                <span className={`${styles.product_title_container__title}`}>{product.title}</span>
                 <div className={styles.product_title_container__subtitle}>{product.serialNumber}</div>
             </div>
             <div
@@ -71,8 +71,8 @@ const ProductsElementsList = ({product, dropProduct}: ProductsElementsList) => {
             <div className={`${styles.product__order_link} d-flex align-items-center`}>
                 <Link href={{
                     pathname: '/orders',
-                    query: {order_id: 1}
-                }}>Длинное предлинное длиннючее название группы</Link>
+                    query: {order_id: product.orderInfo?.id}
+                }}>{product.orderInfo?.title}</Link>
             </div>
             <div className={`d-flex align-items-center`}>
                 <button onClick={() => dropProduct(product.id)} className={styles.product_action}>

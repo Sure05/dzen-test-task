@@ -3,18 +3,19 @@ import {GetStaticProps} from "next";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {useAppDispatch, useAppSelector} from "@/store/hooks";
 import React, {useEffect, useState} from "react";
-import {fetchProducts, setSelectedModel} from "@/store/slice/ProductSlice";
+import {fetchProducts} from "@/store/slice/ProductSlice";
 import ProductsElementsList from "@/components/ProductsElementsList/ProductsElementsList";
 import Modal from "@/components/Modal/Modal";
 import {useTranslation} from "next-i18next";
 import {Product} from "@/types/products";
 import ProductInfo from "@/components/Modal/variants/ProductInfo/ProductInfo";
+import Filters from "@/components/Filters/Filters";
 
 const Products = () => {
     const products = useAppSelector(state => {
         const all = state.products.data;
-        const selectedModel = state.products.selectedModel;
-        if ( selectedModel === null ) {
+        const selectedModel = state.filters.selected;
+        if ( selectedModel === '' ) {
             return state.products;
         } else {
             return {
@@ -44,23 +45,12 @@ const Products = () => {
         setShowModal(false)
     }
 
-    const changeFilter = (e: React.FormEvent<HTMLSelectElement>) => {
-        let value = e.currentTarget.value;
-        dispatch(setSelectedModel(value !== '' ? value : null))
-    }
-
     return (
         <div>
             <title>Products</title>
             <div className={'d-flex'}>
                 <Breadcrumbs list={['Продукты', 25]}/>
-                <div className={'col col-3'} style={{paddingLeft: 15}}>
-                    <select onChange={(e) => changeFilter(e)} className="form-select" aria-label="Default select example">
-                        <option selected value={''}>Open this select menu</option>
-                        <option value="motherboard">Motherboard</option>
-                        <option value="monitor">Monitor</option>
-                    </select>
-                </div>
+                <Filters label={'Model'} />
             </div>
             {products.data.map(el => <ProductsElementsList key={`prod`} product={el} dropProduct={deleteProduct} />)}
             <Modal open={showModal} close={closeModal} title={t('remove_product')}>

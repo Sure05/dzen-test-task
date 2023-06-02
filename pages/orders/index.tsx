@@ -26,7 +26,7 @@ const Bar = () => {
     const [selectedOrder, setSelectedOrder] = useState<number | string | null>(null);
     const [showModal, setShowModal] = useState(false);
     const [deletingOrderInfo, setDeletingOrderInfo] = useState<Order | null>(null);
-    const orders = useAppSelector(state => state.orders.data);
+    const {loading, data: orders} = useAppSelector(state => state.orders);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -37,7 +37,9 @@ const Bar = () => {
         dispatch(fetchOrders())
     }, [])
 
-    console.log(orders)
+    if(loading) {
+        return null
+    }
 
     const AddOrder = (
         <button className={`shadow ${styles.button}`} onClick={() => {

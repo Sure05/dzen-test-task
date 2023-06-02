@@ -204,5 +204,5 @@ export const orders = [
         ]
     }
 ];
-
+export const modelCategories = ['motherboard', 'monitor']
 

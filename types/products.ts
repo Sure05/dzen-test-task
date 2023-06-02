@@ -21,7 +21,11 @@ export type Product = {
     price: Price[],
     order: number,
     date: string,
-    exist: boolean
+    exist: boolean,
+    orderInfo ?: {
+        id: number,
+        title: string
+    }
 }
 
 export type Products = Product[]

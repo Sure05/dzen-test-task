@@ -1,0 +1,12 @@
+.filter {
+  padding-left: 15px;
+  padding-top: 5px;
+  label {
+    font-size: 14px;
+    color: darkgray;
+    padding-right: 10px;
+  }
+  select {
+    text-transform: capitalize;
+  }
+}

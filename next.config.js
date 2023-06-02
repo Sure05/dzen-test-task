@@ -9,7 +9,16 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
-  output: 'standalone'
+  output: 'standalone',
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/orders',
+        permanent: true,
+      },
+    ];
+  },
 }
 
 module.exports = nextConfig

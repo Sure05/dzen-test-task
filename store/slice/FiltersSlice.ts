@@ -2,8 +2,10 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {Models} from "@/types/filter";
 import axios from "axios";
 
+type ModelsTypes = ['motherboard', 'monitor'][number] | []
+
 type InitialStateType = {
-    data: Models | [],
+    data: string[],
     selected: string
 }
 
@@ -29,7 +31,7 @@ const FiltersSlice = createSlice({
         }
     },
     extraReducers: builder => {
-        builder.addCase(fetchFilters.fulfilled, (state, action: {payload: Models}) => {
+        builder.addCase(fetchFilters.fulfilled, (state, action) => {
             state.data = action.payload
         })
     }
